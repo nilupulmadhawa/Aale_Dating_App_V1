@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_my_account">
+<!-- start destination must be and existing fragment Id-->
+    <fragment
+        android:id="@+id/nav_e_mail"
+        android:name="com.example.aale.ui.e_mail.EmailFragment"
+        android:label="@string/menu_e_mail"
+        tools:layout="@layout/fragment_email" />
+
+    <fragment
+        android:id="@+id/nav_users"
+        android:name="com.example.aale.ui.users.UsersFragment"
+        android:label="@string/menu_users"
+        tools:layout="@layout/fragment_users" />
+
+    <fragment
+        android:id="@+id/nav_my_account"
+        android:name="com.example.aale.ui.my_account.MyAccountFragment"
+        android:label="@string/menu_my_account"
+        tools:layout="@layout/fragment_my_account" />
+    <fragment
+        android:id="@+id/nav_push_notifications"
+        android:name="com.example.aale.ui.push_notifications.PushNotificationsFragment"
+        android:label="@string/menu_push_notifications"
+        tools:layout="@layout/fragment_push_notifications" />
+
+    <fragment
+        android:id="@+id/nav_reports"
+        android:name="com.example.aale.ui.reports.ReportsFragment"
+        android:label="@string/menu_reports"
+        tools:layout="@layout/fragment_reports" />
+
+    <fragment
+        android:id="@+id/nav_swipes"
+        android:name="com.example.aale.ui.swipes.SwipesFragment"
+        android:label="@string/menu_swipes"
+        tools:layout="@layout/fragment_swipes" />
+    <fragment
+        android:id="@+id/nav_publish_advertisements"
+        android:name="com.example.aale.ui.advertisements.AdvertisementsFragment"
+        android:label="@string/menu_reports"
+        tools:layout="@layout/fragment_reports" />
+
+</navigation>

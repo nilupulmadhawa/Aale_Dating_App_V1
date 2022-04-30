@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "406182645889",
+    "project_id": "aaledatingapp",
+    "storage_bucket": "aaledatingapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406182645889:android:0d0f96d945194a2090fd80",
+        "android_client_info": {
+          "package_name": "com.example.aale"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406182645889-1apgbi4qffqvsqfj0fv3ru851ds71tjp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTapPSWqHEfXmy-qzywX3i0U9yWxnUtvA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406182645889-1apgbi4qffqvsqfj0fv3ru851ds71tjp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
