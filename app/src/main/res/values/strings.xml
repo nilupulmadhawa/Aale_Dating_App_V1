@@ -36,8 +36,8 @@
     <string name="prompt_username">User Name</string>
     <string name="users">Users</string>
     <string name="add_users">Add Users</string>
-    <string name="user_col1">First Name</string>
-    <string name="user_col2">Last Name</string>
+    <string name="user_col1">User Name</string>
+    <string name="user_col2">Mobile No:</string>
     <string name="user_col3">E-mail</string>
     <string name="user_col4">Profile Pic</string>
     <string name="user_col5">Photos</string>
