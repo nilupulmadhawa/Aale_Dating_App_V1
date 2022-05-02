@@ -20,6 +20,7 @@
     <string name="menu_logout">Logout</string>
 
     <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_phone_number">Phone Number</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Log In</string>
@@ -31,4 +32,20 @@
     <string name="action_register">Register</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="action_sign_up">Sign Up</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="prompt_username">User Name</string>
+    <string name="users">Users</string>
+    <string name="add_users">Add Users</string>
+    <string name="user_col1">First Name</string>
+    <string name="user_col2">Last Name</string>
+    <string name="user_col3">E-mail</string>
+    <string name="user_col4">Profile Pic</string>
+    <string name="user_col5">Photos</string>
+    <string name="user_col6">Last Name</string>
+
+    <string-array name="genders">
+        <item>Male</item>
+        <item>Female</item>
+
+    </string-array>
 </resources>

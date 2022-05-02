@@ -28,8 +28,8 @@ public class UsersFragment extends Fragment {
         UsersViewModel usersViewModel = new ViewModelProvider(this).get(UsersViewModel.class);
         binding =  FragmentUsersBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        final TextView textView = binding.textUsers;
-        usersViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+
+       // usersViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
     @Override

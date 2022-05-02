@@ -1,11 +1,14 @@
 package com.example.aale.model;
 
-abstract class User {
-    private String userID;
-    private String userName;
-    private String userType;
-    private String email;
-    private String password;
+import android.net.Uri;
+
+public abstract class User {
+    protected String userID;
+    protected String userName;
+    protected String userType;
+    protected String email;
+    protected String password;
+    private String profilePic;
 
     public User() {
     }
