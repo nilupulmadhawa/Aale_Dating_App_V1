@@ -74,13 +74,15 @@
                     android:layout_marginBottom="0dp"
                     android:background="@drawable/table_border">
 
-                    <TableRow android:id="@+id/table_header"
-                        android:layout_height="34dp"
-                        >
+                    <TableRow
+                        android:id="@+id/table_header"
+                        android:layout_height="34dp">
 
                         <TextView
+                            android:id="@+id/h_one"
                             android:layout_width="71dp"
                             android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
                             android:gravity="center_horizontal"
                             android:padding="10sp"
                             android:text="@string/user_col1"
@@ -131,9 +133,6 @@
                             android:text="@string/user_col6"
                             android:textColor="@color/black"
                             android:textSize="10sp" />
-
-
-
 
 
                     </TableRow>

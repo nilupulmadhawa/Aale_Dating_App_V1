@@ -41,7 +41,7 @@
     <string name="user_col3">E-mail</string>
     <string name="user_col4">Profile Pic</string>
     <string name="user_col5">Photos</string>
-    <string name="user_col6">Last Name</string>
+    <string name="user_col6">Actions</string>
 
     <string-array name="genders">
         <item>Male</item>
