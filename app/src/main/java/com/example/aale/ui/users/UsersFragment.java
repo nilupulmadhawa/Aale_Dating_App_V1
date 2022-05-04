@@ -1,8 +1,11 @@
 package com.example.aale.ui.users;
 
 
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,28 +13,37 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import com.example.aale.R;
 import com.example.aale.databinding.FragmentUsersBinding;
 import com.example.aale.model.Customer;
+import com.example.aale.ui.add_user.AddUserFragment;
 
 
-import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
-public class UsersFragment extends Fragment {
+
+
+public class UsersFragment extends Fragment  {
     private FragmentUsersBinding binding;
     private  UsersViewModel usersViewModel;
     private TableLayout userTable;
+    private Button adduserBtn;
+    private  Fragment adduser;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -40,7 +52,9 @@ public class UsersFragment extends Fragment {
         binding =  FragmentUsersBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+
         userTable=binding.tableUser;
+
 
         return root;
     }
@@ -55,6 +69,7 @@ public class UsersFragment extends Fragment {
               //create table row
               //getContext return the context that this fragment currently associated with
               TableRow row = new TableRow(getContext());
+
               //add values
               //add to atble
               row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT));
@@ -78,61 +93,108 @@ public class UsersFragment extends Fragment {
               //from sp
               firstName.setTextSize(9);
               lastName.setTextSize(9);
-              email.setTextSize(5);
+              email.setTextSize(9);
               userType.setTextSize(9);
+              email.setId((int)System.currentTimeMillis()/100000);
 
               password.setTextSize(9);
              //set values
               firstName.setText(customer.getUserName());
+
               lastName.setText(customer.getPhone_number().toString());
               email.setText(customer.getEmail());
               userType.setText(customer.getUserType());
               //must add a linear lay out
               LinearLayout linearLayout = new LinearLayout(getContext());
-              linearLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+         //     linearLayout.setLayoutParams(new LinearLayout.LayoutParams(248,LinearLayout.LayoutParams.MATCH_PARENT));
               linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+              linearLayout.setGravity(Gravity.CENTER);
+          //    linearLayout.setBackgroundColor(getContext().getColor(R.color.teal_200));
               //initialize email btn
-              Button  emailBtn= new Button(getContext());
-            //  emailBtn.setBackground(getContext().getDrawable(R.drawable.admin_mail));
+              ImageButton emailBtn= new ImageButton(getContext());
+              emailBtn.setLayoutParams(new LinearLayout.LayoutParams(64,64));
+              emailBtn.setBackgroundResource(R.drawable.admin_mail);
               emailBtn.setId(customer.getPhone_number());
-              emailBtn.setMinimumHeight(24);
-              emailBtn.setMinimumWidth(24);
+              emailBtn.setMaxHeight(64);
+              emailBtn.setMaxWidth(64);
+
               //add email btn to linera lay out
-            //  linearLayout.addView(emailBtn);
+              emailBtn.setEnabled(true);
 
               //initialize edit btn
               Button  editBtn= new Button(getContext());
-              //emailBtn.setBackground(getContext().getDrawable(R.drawable.admin_edit));
+              editBtn.setLayoutParams(new LinearLayout.LayoutParams(64,64));
+
+             // editBtn
               editBtn.setId(customer.getPhone_number()+1);
-              editBtn.setMinimumHeight(24);
-              editBtn.setMinimumWidth(24);
+              editBtn.setMaxHeight(64);
+              editBtn.setBackgroundResource(R.drawable.admin_edit);
+              editBtn.setMaxWidth(64);
+              editBtn.setEnabled(true);
+              editBtn.setTextColor(getContext().getColor(R.color.green));
               //add email btn to linera lay out
-             // linearLayout.addView(editBtn);
+
 
 
               //initialize email btn
               Button  deleteBtn= new Button(getContext());
-          //    emailBtn.setBackground(getContext().getDrawable(R.drawable.admin_delete));
-              deleteBtn.setId(customer.getPhone_number()+2);
-              deleteBtn.setMinimumHeight(24);
-              deleteBtn.setMinimumWidth(24);
-              //add email btn to linera lay out
-             // linearLayout.addView(deleteBtn);
-              linearLayout.addView(password);
+              deleteBtn.setLayoutParams(new LinearLayout.LayoutParams(64,64));
 
-              //add view
+              deleteBtn.setId(customer.getPhone_number()+2);
+              deleteBtn.setMaxHeight(64);
+              deleteBtn.setMaxWidth(64);
+              deleteBtn.setEnabled(true);
+              deleteBtn.setBackgroundResource(R.drawable.admin_delete);
+
+              linearLayout.addView(emailBtn);
+              linearLayout.addView(editBtn);
+              linearLayout.addView(deleteBtn);
+
+
+
+
               row.addView(firstName);
               row.addView(lastName);
               row.addView(email);
               row.addView(userType);
-             // row.addView(linearLayout);
+              row.addView(linearLayout);
 
               userTable.addView(row);
+             editBtn.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+                     Log.i("Table",customer.getUserID()
+                     );
+                 }
+             });
 
+             deleteBtn.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+//to remove user
+                     usersViewModel.deleteUser(customer.getUserID()).observe(getViewLifecycleOwner(),integer -> {
+                         if(integer.equals(1)){
+                             userTable.removeView(row);
+                             Toast.makeText(getContext(),"User deleted ",Toast.LENGTH_SHORT).show();
+                         }else{
+                             Toast.makeText(getContext(),"User is not deleted ",Toast.LENGTH_SHORT).show();
+                         }
+                     });
+
+                 }
+             });
           }
 
         });
+//        adduserBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+
+//           }
+//        });
+
     }
+
 
     @Override
     public void onDestroyView() {
@@ -140,4 +202,14 @@ public class UsersFragment extends Fragment {
         binding = null;
     }
 
+    @SuppressLint("ResourceType")
+    public void addUsers(View v){
+        Log.i("add user", "onClick: sdfdfffff ");
+//             adduser = new AddUserFragment();
+//              FragmentManager fm =getActivity().getSupportFragmentManager();
+//              FragmentTransaction ft = fm.beginTransaction();
+//              ft.replace(R.layout.activity_main,adduser);
+//              ft.addToBackStack("add new user");
+//              ft.commit();
+    }
 }
