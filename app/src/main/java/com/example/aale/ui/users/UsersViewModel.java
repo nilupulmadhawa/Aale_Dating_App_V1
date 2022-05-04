@@ -13,21 +13,30 @@ import java.util.List;
 
 public class UsersViewModel extends ViewModel implements CommonRepository.OnFirestoreTaskComplete{
     // TODO: Implement the ViewModel
-    private final MutableLiveData<String> mText;
-    private final MutableLiveData<List<Customer>> customersLiveData = new MutableLiveData<>();
 
+    private final MutableLiveData<List<Customer>> customersLiveData = new MutableLiveData<>();
+    private  final MutableLiveData<Integer> deleteState;
     private CommonRepository commonRepository=new CommonRepository(this);
+
     public UsersViewModel() {
-        mText = new MutableLiveData<>();
+
+
         commonRepository.getCustomers();
 
+        deleteState=new MutableLiveData<>();
+
+
     }
 
-    public LiveData<String> getText() {
-        return mText;
-    }
+
     public LiveData<List<Customer>> getUsers(){
         return  customersLiveData;
+    }
+
+    public LiveData<Integer> deleteUser(String userID){
+        commonRepository.deleteUser(userID);
+        return deleteState;
+
     }
 
     @Override
@@ -39,4 +48,19 @@ public class UsersViewModel extends ViewModel implements CommonRepository.OnFire
     public void onRetrievalError(Exception e) {
 
     }
+
+
+
+
+    @Override
+    public void onUserDeleteTaskComplete(Integer deleteStates) {
+        deleteState.setValue(deleteStates);
+    }
+
+    @Override
+    public void onUserDeleteError(Integer deleteStates) {
+        deleteState.setValue(deleteStates);
+    }
+
+
 }
