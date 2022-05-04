@@ -1,16 +1,18 @@
 package com.example.aale.ui.users;
 
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+
 import androidx.lifecycle.ViewModelProvider;
 
-import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 
 import android.util.Log;
@@ -30,10 +32,6 @@ import android.widget.Toast;
 import com.example.aale.R;
 import com.example.aale.databinding.FragmentUsersBinding;
 import com.example.aale.model.Customer;
-import com.example.aale.ui.add_user.AddUserFragment;
-
-
-
 
 
 
@@ -43,7 +41,7 @@ public class UsersFragment extends Fragment  {
     private TableLayout userTable;
     private Button adduserBtn;
     private  Fragment adduser;
-
+    private NavController  navController;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -54,7 +52,7 @@ public class UsersFragment extends Fragment  {
 
 
         userTable=binding.tableUser;
-
+        adduserBtn=binding.addUser;
 
         return root;
     }
@@ -62,6 +60,15 @@ public class UsersFragment extends Fragment  {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        navController =Navigation.findNavController(view);
+
+        adduserBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(R.id.action_nav_users_to_nav_add_new_user2);
+            }
+        });
         usersViewModel = new ViewModelProvider(this).get(UsersViewModel.class);
 
         usersViewModel.getUsers().observe(getViewLifecycleOwner(), customers -> {
@@ -104,12 +111,14 @@ public class UsersFragment extends Fragment  {
               lastName.setText(customer.getPhone_number().toString());
               email.setText(customer.getEmail());
               userType.setText(customer.getUserType());
+
+              //Do not give layout parameters for linear layout
+              //for button in the table
               //must add a linear lay out
               LinearLayout linearLayout = new LinearLayout(getContext());
-         //     linearLayout.setLayoutParams(new LinearLayout.LayoutParams(248,LinearLayout.LayoutParams.MATCH_PARENT));
               linearLayout.setOrientation(LinearLayout.HORIZONTAL);
               linearLayout.setGravity(Gravity.CENTER);
-          //    linearLayout.setBackgroundColor(getContext().getColor(R.color.teal_200));
+
               //initialize email btn
               ImageButton emailBtn= new ImageButton(getContext());
               emailBtn.setLayoutParams(new LinearLayout.LayoutParams(64,64));
@@ -131,7 +140,7 @@ public class UsersFragment extends Fragment  {
               editBtn.setBackgroundResource(R.drawable.admin_edit);
               editBtn.setMaxWidth(64);
               editBtn.setEnabled(true);
-              editBtn.setTextColor(getContext().getColor(R.color.green));
+
               //add email btn to linera lay out
 
 
@@ -160,38 +169,109 @@ public class UsersFragment extends Fragment  {
               row.addView(linearLayout);
 
               userTable.addView(row);
-             editBtn.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View v) {
-                     Log.i("Table",customer.getUserID()
-                     );
-                 }
-             });
 
+
+
+               //alert on delete
              deleteBtn.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View v) {
-//to remove user
-                     usersViewModel.deleteUser(customer.getUserID()).observe(getViewLifecycleOwner(),integer -> {
-                         if(integer.equals(1)){
-                             userTable.removeView(row);
-                             Toast.makeText(getContext(),"User deleted ",Toast.LENGTH_SHORT).show();
-                         }else{
-                             Toast.makeText(getContext(),"User is not deleted ",Toast.LENGTH_SHORT).show();
-                         }
-                     });
 
+                     AlertDialog.Builder builder
+                             = new AlertDialog
+                             .Builder(getContext());
+
+                     // Set the message show for the Alert time
+                     builder.setMessage("Do you want to delete this user?");
+
+                     // Set Alert Title
+                     builder.setTitle("Alert !");
+
+                     // Set Cancelable false
+                     // for when the user clicks on the outside
+                     // the Dialog Box then it will remain show
+                     builder.setCancelable(false);
+
+                     // Set the positive button with yes name
+                     // OnClickListener method is use of
+                     // DialogInterface interface.
+
+                     builder
+                             .setPositiveButton(
+                                     "Yes",
+                                     new DialogInterface
+                                             .OnClickListener() {
+
+                                         @Override
+                                         public void onClick(DialogInterface dialog,
+                                                             int which)
+                                         {
+
+                                             // When the user click yes button
+                                             // then app user will be removed
+                                             usersViewModel.deleteUser(customer.getUserID()).observe(getViewLifecycleOwner(),integer -> {
+                                                 if(integer.equals(1)){
+                                                     userTable.removeView(row);
+                                                     Toast.makeText(getContext(),"User deleted ",Toast.LENGTH_SHORT).show();
+                                                 }else{
+                                                     Toast.makeText(getContext(),"User is not deleted ",Toast.LENGTH_SHORT).show();
+                                                 }
+                                             });
+
+                                         }
+                                     });
+
+                     // Set the Negative button with No name
+                     // OnClickListener method is use
+                     // of DialogInterface interface.
+                     builder
+                             .setNegativeButton(
+                                     "No",
+                                     new DialogInterface
+                                             .OnClickListener() {
+
+                                         @Override
+                                         public void onClick(DialogInterface dialog,
+                                                             int which)
+                                         {
+
+                                             // If user click no
+                                             // then dialog box is canceled.
+                                             dialog.cancel();
+                                         }
+                                     });
+
+                     // Create the Alert dialog
+                     AlertDialog alertDialog = builder.create();
+
+                     // Show the Alert Dialog box
+                     alertDialog.show();
+
+
+
+
+//to remove user
+
+
+                 }
+             });
+             emailBtn.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+
+                     navController.navigate(R.id.action_nav_users_to_nav_e_mail);
+                 }
+             });
+             editBtn.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+                     navController.navigate(R.id.action_nav_users_to_nav_edit_user);
                  }
              });
           }
 
         });
-//        adduserBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
 
-//           }
-//        });
 
     }
 
@@ -202,14 +282,5 @@ public class UsersFragment extends Fragment  {
         binding = null;
     }
 
-    @SuppressLint("ResourceType")
-    public void addUsers(View v){
-        Log.i("add user", "onClick: sdfdfffff ");
-//             adduser = new AddUserFragment();
-//              FragmentManager fm =getActivity().getSupportFragmentManager();
-//              FragmentTransaction ft = fm.beginTransaction();
-//              ft.replace(R.layout.activity_main,adduser);
-//              ft.addToBackStack("add new user");
-//              ft.commit();
-    }
+
 }

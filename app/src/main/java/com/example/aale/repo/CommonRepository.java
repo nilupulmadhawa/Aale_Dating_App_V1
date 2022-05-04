@@ -23,6 +23,7 @@ import java.util.List;
 public class CommonRepository {
     private static final DatabaseReference customerDBConneciton = DBConnectionRepository.getCustomerReference();
     private OnFirestoreTaskComplete onFirestoreTaskComplete;
+
     public CommonRepository (OnFirestoreTaskComplete onFirestoreTaskComplete) {
         this.onFirestoreTaskComplete=onFirestoreTaskComplete;
 
@@ -65,6 +66,7 @@ public class CommonRepository {
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if(task.isSuccessful()){
                     if(task.getResult().hasChild(userID)){
+                        //
                         customerDBConneciton.child(userID).removeValue();
 
                         onFirestoreTaskComplete.onUserDeleteTaskComplete(1);
