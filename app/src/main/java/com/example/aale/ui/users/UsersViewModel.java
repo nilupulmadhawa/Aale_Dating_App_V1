@@ -16,13 +16,12 @@ public class UsersViewModel extends ViewModel implements CommonRepository.OnFire
 
     private final MutableLiveData<List<Customer>> customersLiveData = new MutableLiveData<>();
     private  final MutableLiveData<Integer> deleteState;
+
     private CommonRepository commonRepository=new CommonRepository(this);
 
     public UsersViewModel() {
 
-
         commonRepository.getCustomers();
-
         deleteState=new MutableLiveData<>();
 
 
@@ -48,7 +47,6 @@ public class UsersViewModel extends ViewModel implements CommonRepository.OnFire
     public void onRetrievalError(Exception e) {
 
     }
-
 
 
 

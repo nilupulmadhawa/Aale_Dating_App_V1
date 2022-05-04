@@ -13,6 +13,8 @@ public class DBConnectionRepository {
     private static final String EMAIL="Email";
     private static final String SWIPE="Swipe";
     private static final String REPORT="Report";
+    private static final String ADVERTISEMENT="Advertisement";
+
 
     private static DatabaseReference dbRef=null;
     private DBConnectionRepository(){}
@@ -48,5 +50,8 @@ public class DBConnectionRepository {
     public static  DatabaseReference getReportReference(){
         return getDbRef().child(REPORT);
     }
+    public static DatabaseReference getAdvertisementReference(){
+        return getDbRef().child(ADVERTISEMENT);
 
+    }
 }

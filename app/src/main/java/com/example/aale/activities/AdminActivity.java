@@ -99,7 +99,5 @@ public class AdminActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-    public  void addUsers(View v){
-        fragment.addUsers(v);
-    }
+
 }
