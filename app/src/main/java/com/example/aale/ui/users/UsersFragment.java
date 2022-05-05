@@ -63,12 +63,7 @@ public class UsersFragment extends Fragment  {
 
         navController =Navigation.findNavController(view);
 
-        adduserBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_nav_users_to_nav_add_new_user2);
-            }
-        });
+        adduserBtn.setOnClickListener(v -> navController.navigate(R.id.action_nav_users_to_nav_add_new_user2));
         usersViewModel = new ViewModelProvider(this).get(UsersViewModel.class);
 
         usersViewModel.getUsers().observe(getViewLifecycleOwner(), customers -> {
@@ -170,104 +165,64 @@ public class UsersFragment extends Fragment  {
 
               userTable.addView(row);
 
+              //alert on delete
+             deleteBtn.setOnClickListener(v -> {
 
+                 AlertDialog.Builder builder
+                         = new AlertDialog
+                         .Builder(getContext());
 
-               //alert on delete
-             deleteBtn.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View v) {
+                 // Set the message show for the Alert time
+                 builder.setMessage("Do you want to delete this user?");
 
-                     AlertDialog.Builder builder
-                             = new AlertDialog
-                             .Builder(getContext());
+                 // Set Alert Title
+                 builder.setTitle("Alert !");
 
-                     // Set the message show for the Alert time
-                     builder.setMessage("Do you want to delete this user?");
+                 // Set Cancelable false
+                 // for when the user clicks on the outside
+                 // the Dialog Box then it will remain show
+                 builder.setCancelable(false);
 
-                     // Set Alert Title
-                     builder.setTitle("Alert !");
+                 // Set the positive button with yes name
+                 // OnClickListener method is use of
+                 // DialogInterface interface.
 
-                     // Set Cancelable false
-                     // for when the user clicks on the outside
-                     // the Dialog Box then it will remain show
-                     builder.setCancelable(false);
+                 builder.setPositiveButton("Yes", (dialog, which) -> {
+                     // When the user click yes button
+                     // then app user will be removed
+                        usersViewModel.deleteUser(customer.getUserID()).observe(getViewLifecycleOwner(),integer -> {
+                             if(integer.equals(1)){
+                                 userTable.removeView(row);
+                                 Toast.makeText(getContext(),"User deleted ",Toast.LENGTH_SHORT).show();
+                             }else{
+                                 Toast.makeText(getContext(),"User is not deleted ",Toast.LENGTH_SHORT).show();
+                             }
+                     });
 
-                     // Set the positive button with yes name
-                     // OnClickListener method is use of
-                     // DialogInterface interface.
+                 });
 
-                     builder
-                             .setPositiveButton(
-                                     "Yes",
-                                     new DialogInterface
-                                             .OnClickListener() {
+                 // Set the Negative button with No name
+                 // OnClickListener method is use
+                 // of DialogInterface interface.
+                 builder.setNegativeButton("No", (dialog, which) -> {
+                     // If user click no
+                     // then dialog box is canceled.
+                     dialog.cancel();
+                 });
+                 // Create the Alert dialog
+                 AlertDialog alertDialog = builder.create();
 
-                                         @Override
-                                         public void onClick(DialogInterface dialog,
-                                                             int which)
-                                         {
-
-                                             // When the user click yes button
-                                             // then app user will be removed
-                                             usersViewModel.deleteUser(customer.getUserID()).observe(getViewLifecycleOwner(),integer -> {
-                                                 if(integer.equals(1)){
-                                                     userTable.removeView(row);
-                                                     Toast.makeText(getContext(),"User deleted ",Toast.LENGTH_SHORT).show();
-                                                 }else{
-                                                     Toast.makeText(getContext(),"User is not deleted ",Toast.LENGTH_SHORT).show();
-                                                 }
-                                             });
-
-                                         }
-                                     });
-
-                     // Set the Negative button with No name
-                     // OnClickListener method is use
-                     // of DialogInterface interface.
-                     builder
-                             .setNegativeButton(
-                                     "No",
-                                     new DialogInterface
-                                             .OnClickListener() {
-
-                                         @Override
-                                         public void onClick(DialogInterface dialog,
-                                                             int which)
-                                         {
-
-                                             // If user click no
-                                             // then dialog box is canceled.
-                                             dialog.cancel();
-                                         }
-                                     });
-
-                     // Create the Alert dialog
-                     AlertDialog alertDialog = builder.create();
-
-                     // Show the Alert Dialog box
-                     alertDialog.show();
+                 // Show the Alert Dialog box
+                 alertDialog.show();
 
 
 
+                 //to remove user
 
-//to remove user
 
-
-                 }
              });
-             emailBtn.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View v) {
-
-                     navController.navigate(R.id.action_nav_users_to_nav_e_mail);
-                 }
-             });
-             editBtn.setOnClickListener(new View.OnClickListener() {
-                 @Override
-                 public void onClick(View v) {
-                     navController.navigate(R.id.action_nav_users_to_nav_edit_user);
-                 }
-             });
+             emailBtn.setOnClickListener(v -> navController.navigate(R.id.action_nav_users_to_nav_e_mail));
+             editBtn.setOnClickListener(v -> navController.navigate(R.id.action_nav_users_to_nav_edit_user));
           }
 
         });
