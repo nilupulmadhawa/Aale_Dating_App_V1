@@ -85,7 +85,7 @@ public class CommonRepository {
             public void onFailure(@NonNull Exception e) {
 
             }
-        });;
+        });
 
     }
 
