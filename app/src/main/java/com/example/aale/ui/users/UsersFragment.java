@@ -32,6 +32,7 @@ import android.widget.Toast;
 import com.example.aale.R;
 import com.example.aale.databinding.FragmentUsersBinding;
 import com.example.aale.model.Customer;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 
@@ -42,6 +43,7 @@ public class UsersFragment extends Fragment  {
     private Button adduserBtn;
     private  Fragment adduser;
     private NavController  navController;
+    private FirebaseAuth mAuth=FirebaseAuth.getInstance();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -105,7 +107,7 @@ public class UsersFragment extends Fragment  {
 
               lastName.setText(customer.getPhone_number().toString());
               email.setText(customer.getEmail());
-              userType.setText(customer.getUserType());
+              userType.setText(customer.getGender());
 
               //Do not give layout parameters for linear layout
               //for button in the table
@@ -190,9 +192,12 @@ public class UsersFragment extends Fragment  {
                  builder.setPositiveButton("Yes", (dialog, which) -> {
                      // When the user click yes button
                      // then app user will be removed
-                        usersViewModel.deleteUser(customer.getUserID()).observe(getViewLifecycleOwner(),integer -> {
+                     //firet get the email
+                       String deleted_usersID=customer.getUserID();
+                        usersViewModel.deleteUser(deleted_usersID).observe(getViewLifecycleOwner(),integer -> {
                              if(integer.equals(1)){
                                  userTable.removeView(row);
+
                                  Toast.makeText(getContext(),"User deleted ",Toast.LENGTH_SHORT).show();
                              }else{
                                  Toast.makeText(getContext(),"User is not deleted ",Toast.LENGTH_SHORT).show();
@@ -221,7 +226,16 @@ public class UsersFragment extends Fragment  {
 
 
              });
-             emailBtn.setOnClickListener(v -> navController.navigate(R.id.action_nav_users_to_nav_e_mail));
+             //navigate to email interface
+             emailBtn.setOnClickListener((v) -> {
+
+                     String adminEmail =mAuth.getCurrentUser().getEmail();
+                     UsersFragmentDirections.ActionNavUsersToNavEMail action= UsersFragmentDirections.actionNavUsersToNavEMail();
+                     action.setEmailId(customer.getEmail());
+                     action.setAdminEmailId(adminEmail);
+                     navController.navigate(action);
+             });
+
              editBtn.setOnClickListener(v -> navController.navigate(R.id.action_nav_users_to_nav_edit_user));
           }
 
