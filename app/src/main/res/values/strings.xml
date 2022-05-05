@@ -46,9 +46,11 @@
     <string name="add_new_admin">Add New Admin</string>
     <string name="edit_user">Edit User</string>
     <string name="user_email">User Email</string>
-    <string name="confirm_password">Confirm  Password</string>
+    <string name="confirm_password">Confirm Password</string>
     <string name="password">Password</string>
     <string name="user_name">User Name</string>
+    <string name="add_admin">Add Admin</string>
+    <string name="semd_email">Send Email</string>
 
     <string-array name="genders">
         <item>Male</item>

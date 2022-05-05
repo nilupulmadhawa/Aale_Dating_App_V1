@@ -39,11 +39,6 @@ public class EmailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //get the args values
-        if(getArguments()!=null){
-            EmailFragmentArgs args =EmailFragmentArgs.fromBundle(getArguments());
-            textView.setText(args.getEmailId()+"  "+args.getAdminEmailId());
-        }
-
 
         //emailViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
     }

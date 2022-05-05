@@ -230,7 +230,8 @@ public class UsersFragment extends Fragment  {
              emailBtn.setOnClickListener((v) -> {
 
                      String adminEmail =mAuth.getCurrentUser().getEmail();
-                     UsersFragmentDirections.ActionNavUsersToNavEMail action= UsersFragmentDirections.actionNavUsersToNavEMail();
+                    UsersFragmentDirections.ActionNavUsersToSendEmailFragment action= UsersFragmentDirections.actionNavUsersToSendEmailFragment();
+
                      action.setEmailId(customer.getEmail());
                      action.setAdminEmailId(adminEmail);
                      navController.navigate(action);
