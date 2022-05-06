@@ -56,17 +56,8 @@
     <string name="subject">Subject</string>
     <string name="message">Message</string>
     <string name="send_email">Send Email</string>
-<<<<<<< HEAD
     <string name="User_logout">Log Out</string>
     <string name="user_profile">User Profile Activity</string>
-=======
-    <string name="name">text1</string>
-    <string name="tp">Telephone No.</string>
-    <string name="personname">pn1</string>
-    <string name="personphone">pphone</string>
-    <string name="personmail">pmail</string>
-    <string name="personaddress">paddress</string>
->>>>>>> swpie
 
     <string-array name="genders">
         <item>Male</item>

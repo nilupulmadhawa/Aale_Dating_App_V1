@@ -32,10 +32,7 @@ import android.widget.Toast;
 import com.example.aale.R;
 import com.example.aale.databinding.FragmentUsersBinding;
 import com.example.aale.model.Customer;
-<<<<<<< HEAD
 import com.example.aale.model.User;
-=======
->>>>>>> swpie
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -246,7 +243,6 @@ public class UsersFragment extends Fragment  {
                      navController.navigate(action);
              });
 
-<<<<<<< HEAD
              editBtn.setOnClickListener((v) -> {
                  UsersFragmentDirections.ActionNavUsersToNavEditUser action = UsersFragmentDirections.actionNavUsersToNavEditUser();
                  action.setUserName(customer.getUserName());
@@ -255,9 +251,6 @@ public class UsersFragment extends Fragment  {
                  navController.navigate(action);
 
              });
-=======
-             editBtn.setOnClickListener(v -> navController.navigate(R.id.action_nav_users_to_nav_edit_user));
->>>>>>> swpie
           }
 
         });
