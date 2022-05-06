@@ -15,8 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.aale.activities.AdminActivity;
-import com.example.aale.activities.RegisterActivity;
+
 import com.example.aale.databinding.ActivityLoginBinding;
 import com.example.aale.repo.DBConnectionRepository;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -147,6 +146,7 @@ public class LoginActivity extends Activity {
         super.onStop();
         mAuth.removeAuthStateListener(firebaseAuthStateListener);
     }
+
 
 
 }

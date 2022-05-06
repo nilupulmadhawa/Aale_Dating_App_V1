@@ -32,6 +32,7 @@ import android.widget.Toast;
 import com.example.aale.R;
 import com.example.aale.databinding.FragmentUsersBinding;
 import com.example.aale.model.Customer;
+import com.example.aale.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -116,22 +117,27 @@ public class UsersFragment extends Fragment  {
               linearLayout.setOrientation(LinearLayout.HORIZONTAL);
               linearLayout.setGravity(Gravity.CENTER);
 
+              LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                      64,64);
+
+              layoutParams.setMargins(0, 0, 30, 0);
               //initialize email btn
               ImageButton emailBtn= new ImageButton(getContext());
-              emailBtn.setLayoutParams(new LinearLayout.LayoutParams(64,64));
+              emailBtn.setLayoutParams(new LinearLayout.LayoutParams(layoutParams));
+
+
               emailBtn.setBackgroundResource(R.drawable.admin_mail);
               emailBtn.setId(customer.getPhone_number());
               emailBtn.setMaxHeight(64);
               emailBtn.setMaxWidth(64);
-
-              //add email btn to linera lay out
               emailBtn.setEnabled(true);
 
               //initialize edit btn
               Button  editBtn= new Button(getContext());
-              editBtn.setLayoutParams(new LinearLayout.LayoutParams(64,64));
+              editBtn.setLayoutParams( layoutParams);
 
              // editBtn
+
               editBtn.setId(customer.getPhone_number()+1);
               editBtn.setMaxHeight(64);
               editBtn.setBackgroundResource(R.drawable.admin_edit);
@@ -237,7 +243,14 @@ public class UsersFragment extends Fragment  {
                      navController.navigate(action);
              });
 
-             editBtn.setOnClickListener(v -> navController.navigate(R.id.action_nav_users_to_nav_edit_user));
+             editBtn.setOnClickListener((v) -> {
+                 UsersFragmentDirections.ActionNavUsersToNavEditUser action = UsersFragmentDirections.actionNavUsersToNavEditUser();
+                 action.setUserName(customer.getUserName());
+                 action.setPassword(customer.getPassword());
+                 action.setUserEmailId(customer.getEmail());
+                 navController.navigate(action);
+
+             });
           }
 
         });
