@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.aale.model.Admin;
 import com.example.aale.model.Email;
 import com.example.aale.repo.AdminRepository;
 import com.example.aale.repo.CommonRepository;
@@ -13,6 +14,7 @@ public class SendEmailViewModel extends ViewModel implements  AdminRepository.On
 
 
         private  final MutableLiveData<Integer> sent_State;
+        private  final MutableLiveData<Integer>  admin_added;
         private  final  MutableLiveData<String> subject;
 
 
@@ -20,7 +22,7 @@ public class SendEmailViewModel extends ViewModel implements  AdminRepository.On
         private AdminRepository adminnRepository=new AdminRepository(this);
         public SendEmailViewModel() {
             subject=new MutableLiveData<>();
-
+            admin_added=new MutableLiveData<>();
             sent_State=new MutableLiveData<>();
 
         }
@@ -29,13 +31,29 @@ public class SendEmailViewModel extends ViewModel implements  AdminRepository.On
             adminnRepository.sendEmail(email);
             return sent_State;
         }
+
         @Override
         public void onMessageSendSuccess(Integer sentState) {
            sent_State.setValue(sentState);
         }
 
         @Override
-        public void onMessageSendUnsuccess(Integer sentState) {
+        public void onMessageSendUnSuccess(Integer sentState) {
             sent_State.setValue(sentState);
+        }
+
+        @Override
+        public void onAdminCreationSuccess(Integer creationSuccessState) {
+            admin_added.setValue(creationSuccessState);
+        }
+
+        @Override
+        public void onAdminCreationUnSuccess(Integer creationUnSuccessState) {
+             admin_added.setValue(creationUnSuccessState);
+        }
+
+        @Override
+        public void onAdminDetailsStoreUnSuccess(Integer storeUnSuccessState) {
+            admin_added.setValue(storeUnSuccessState);
         }
 }

@@ -60,7 +60,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:id="@+id/edt_receiver_email_layout"
+                    android:id="@+id/edt_user_email_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_email"
@@ -79,6 +79,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
+
                         android:maxLength="50"
                         android:inputType="textEmailAddress" />
 
@@ -149,7 +150,7 @@
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_send_mail"
+                    android:id="@+id/btn_add_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
