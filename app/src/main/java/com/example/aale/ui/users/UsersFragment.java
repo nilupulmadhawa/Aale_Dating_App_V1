@@ -55,7 +55,7 @@ public class UsersFragment extends Fragment  {
 
         userTable=binding.tableUser;
         adduserBtn=binding.addUser;
-
+        usersViewModel = new ViewModelProvider(this).get(UsersViewModel.class);
         return root;
     }
 
@@ -66,7 +66,7 @@ public class UsersFragment extends Fragment  {
         navController =Navigation.findNavController(view);
 
         adduserBtn.setOnClickListener(v -> navController.navigate(R.id.action_nav_users_to_nav_add_new_user2));
-        usersViewModel = new ViewModelProvider(this).get(UsersViewModel.class);
+
 
         usersViewModel.getUsers().observe(getViewLifecycleOwner(), customers -> {
           for(Customer customer : customers){
@@ -230,7 +230,7 @@ public class UsersFragment extends Fragment  {
              emailBtn.setOnClickListener((v) -> {
 
                      String adminEmail =mAuth.getCurrentUser().getEmail();
-                    UsersFragmentDirections.ActionNavUsersToSendEmailFragment action= UsersFragmentDirections.actionNavUsersToSendEmailFragment();
+                     UsersFragmentDirections.ActionNavUsersToSendEmailFragment action= UsersFragmentDirections.actionNavUsersToSendEmailFragment();
 
                      action.setEmailId(customer.getEmail());
                      action.setAdminEmailId(adminEmail);

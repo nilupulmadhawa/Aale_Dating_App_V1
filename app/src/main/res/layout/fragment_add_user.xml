@@ -79,6 +79,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
+
                         android:maxLength="50"
                         android:inputType="textEmailAddress" />
 
@@ -149,7 +150,7 @@
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_add_new_user"
+                    android:id="@+id/btn_add_user"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"

@@ -51,10 +51,21 @@
     <string name="user_name">User Name</string>
     <string name="add_admin">Add Admin</string>
     <string name="semd_email">Send Email</string>
+    <string name="sender_email">Sender Email</string>
+    <string name="receiver_email">Receiver Email</string>
+    <string name="subject">Subject</string>
+    <string name="message">Message</string>
+    <string name="send_email">Send Email</string>
+    <string name="User_logout">Log Out</string>
+    <string name="user_profile">User Profile Activity</string>
 
     <string-array name="genders">
         <item>Male</item>
         <item>Female</item>
 
     </string-array>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
