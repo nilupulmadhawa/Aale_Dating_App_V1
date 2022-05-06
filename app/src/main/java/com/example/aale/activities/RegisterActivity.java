@@ -76,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if(user != null){
 
                     Log.i("reg","logged in");
-                    Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                     finish();
                     return;
@@ -156,7 +156,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     customer.setUserName(username);
                                     customer.setEmail(userEmail);
                                     customer.setPassword(userPasssword);
-                                    customer.setUserType("customer");
+
                                     //get user inputs and assigning them into stdObject
 
                                     //pass child value as the key

@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.aale.R;
+import com.example.aale.ui.users.UsersFragment;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -24,12 +27,13 @@ public class AdminActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private UsersFragment fragment;
     //firebaseAtuth needs to be instantiated
     private FirebaseAuth mAuth=FirebaseAuth.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        fragment = new UsersFragment();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -95,4 +99,5 @@ public class AdminActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
 }

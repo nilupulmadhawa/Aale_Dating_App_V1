@@ -42,10 +42,38 @@
     <string name="user_col4">Profile Pic</string>
     <string name="user_col5">Photos</string>
     <string name="user_col6">Actions</string>
+    <string name="user_type">User Type</string>
+    <string name="add_new_admin">Add New Admin</string>
+    <string name="edit_user">Edit User</string>
+    <string name="user_email">User Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="password">Password</string>
+    <string name="user_name">User Name</string>
+    <string name="add_admin">Add Admin</string>
+    <string name="semd_email">Send Email</string>
+    <string name="sender_email">Sender Email</string>
+    <string name="receiver_email">Receiver Email</string>
+    <string name="subject">Subject</string>
+    <string name="message">Message</string>
+    <string name="send_email">Send Email</string>
+<<<<<<< HEAD
+    <string name="User_logout">Log Out</string>
+    <string name="user_profile">User Profile Activity</string>
+=======
+    <string name="name">text1</string>
+    <string name="tp">Telephone No.</string>
+    <string name="personname">pn1</string>
+    <string name="personphone">pphone</string>
+    <string name="personmail">pmail</string>
+>>>>>>> parent of 218af39 (Changes)
 
     <string-array name="genders">
         <item>Male</item>
         <item>Female</item>
 
     </string-array>
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

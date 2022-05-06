@@ -1,37 +1,50 @@
 package com.example.aale.ui.users;
 
 
+
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
+import com.example.aale.R;
 import com.example.aale.databinding.FragmentUsersBinding;
 import com.example.aale.model.Customer;
+import com.example.aale.model.User;
+import com.google.firebase.auth.FirebaseAuth;
 
 
-import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
-public class UsersFragment extends Fragment {
+public class UsersFragment extends Fragment  {
     private FragmentUsersBinding binding;
     private  UsersViewModel usersViewModel;
     private TableLayout userTable;
+    private Button adduserBtn;
+    private  Fragment adduser;
+    private NavController  navController;
+    private FirebaseAuth mAuth=FirebaseAuth.getInstance();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -40,21 +53,28 @@ public class UsersFragment extends Fragment {
         binding =  FragmentUsersBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        userTable=binding.tableUser;
 
+        userTable=binding.tableUser;
+        adduserBtn=binding.addUser;
+        usersViewModel = new ViewModelProvider(this).get(UsersViewModel.class);
         return root;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        usersViewModel = new ViewModelProvider(this).get(UsersViewModel.class);
+
+        navController =Navigation.findNavController(view);
+
+        adduserBtn.setOnClickListener(v -> navController.navigate(R.id.action_nav_users_to_nav_add_new_user2));
+
 
         usersViewModel.getUsers().observe(getViewLifecycleOwner(), customers -> {
           for(Customer customer : customers){
               //create table row
               //getContext return the context that this fragment currently associated with
               TableRow row = new TableRow(getContext());
+
               //add values
               //add to atble
               row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT));
@@ -78,66 +98,172 @@ public class UsersFragment extends Fragment {
               //from sp
               firstName.setTextSize(9);
               lastName.setTextSize(9);
-              email.setTextSize(5);
+              email.setTextSize(9);
               userType.setTextSize(9);
+              email.setId((int)System.currentTimeMillis()/100000);
 
               password.setTextSize(9);
              //set values
               firstName.setText(customer.getUserName());
+
               lastName.setText(customer.getPhone_number().toString());
               email.setText(customer.getEmail());
-              userType.setText(customer.getUserType());
+              userType.setText(customer.getGender());
+
+              //Do not give layout parameters for linear layout
+              //for button in the table
               //must add a linear lay out
               LinearLayout linearLayout = new LinearLayout(getContext());
-              linearLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
               linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+              linearLayout.setGravity(Gravity.CENTER);
+
+              LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                      64,64);
+
+              layoutParams.setMargins(0, 0, 30, 0);
               //initialize email btn
-              Button  emailBtn= new Button(getContext());
-            //  emailBtn.setBackground(getContext().getDrawable(R.drawable.admin_mail));
+              ImageButton emailBtn= new ImageButton(getContext());
+              emailBtn.setLayoutParams(new LinearLayout.LayoutParams(layoutParams));
+
+
+              emailBtn.setBackgroundResource(R.drawable.admin_mail);
               emailBtn.setId(customer.getPhone_number());
-              emailBtn.setMinimumHeight(24);
-              emailBtn.setMinimumWidth(24);
-              //add email btn to linera lay out
-            //  linearLayout.addView(emailBtn);
+              emailBtn.setMaxHeight(64);
+              emailBtn.setMaxWidth(64);
+              emailBtn.setEnabled(true);
 
               //initialize edit btn
               Button  editBtn= new Button(getContext());
-              //emailBtn.setBackground(getContext().getDrawable(R.drawable.admin_edit));
+              editBtn.setLayoutParams( layoutParams);
+
+             // editBtn
+
               editBtn.setId(customer.getPhone_number()+1);
-              editBtn.setMinimumHeight(24);
-              editBtn.setMinimumWidth(24);
+              editBtn.setMaxHeight(64);
+              editBtn.setBackgroundResource(R.drawable.admin_edit);
+              editBtn.setMaxWidth(64);
+              editBtn.setEnabled(true);
+
               //add email btn to linera lay out
-             // linearLayout.addView(editBtn);
+
 
 
               //initialize email btn
               Button  deleteBtn= new Button(getContext());
-          //    emailBtn.setBackground(getContext().getDrawable(R.drawable.admin_delete));
-              deleteBtn.setId(customer.getPhone_number()+2);
-              deleteBtn.setMinimumHeight(24);
-              deleteBtn.setMinimumWidth(24);
-              //add email btn to linera lay out
-             // linearLayout.addView(deleteBtn);
-              linearLayout.addView(password);
+              deleteBtn.setLayoutParams(new LinearLayout.LayoutParams(64,64));
 
-              //add view
+              deleteBtn.setId(customer.getPhone_number()+2);
+              deleteBtn.setMaxHeight(64);
+              deleteBtn.setMaxWidth(64);
+              deleteBtn.setEnabled(true);
+              deleteBtn.setBackgroundResource(R.drawable.admin_delete);
+
+              linearLayout.addView(emailBtn);
+              linearLayout.addView(editBtn);
+              linearLayout.addView(deleteBtn);
+
+
+
+
               row.addView(firstName);
               row.addView(lastName);
               row.addView(email);
               row.addView(userType);
-             // row.addView(linearLayout);
+              row.addView(linearLayout);
 
               userTable.addView(row);
 
+              //alert on delete
+             deleteBtn.setOnClickListener(v -> {
+
+                 AlertDialog.Builder builder
+                         = new AlertDialog
+                         .Builder(getContext());
+
+                 // Set the message show for the Alert time
+                 builder.setMessage("Do you want to delete this user?");
+
+                 // Set Alert Title
+                 builder.setTitle("Alert !");
+
+                 // Set Cancelable false
+                 // for when the user clicks on the outside
+                 // the Dialog Box then it will remain show
+                 builder.setCancelable(false);
+
+                 // Set the positive button with yes name
+                 // OnClickListener method is use of
+                 // DialogInterface interface.
+
+                 builder.setPositiveButton("Yes", (dialog, which) -> {
+                     // When the user click yes button
+                     // then app user will be removed
+                     //firet get the email
+                       String deleted_usersID=customer.getUserID();
+                        usersViewModel.deleteUser(deleted_usersID).observe(getViewLifecycleOwner(),integer -> {
+                             if(integer.equals(1)){
+                                 userTable.removeView(row);
+
+                                 Toast.makeText(getContext(),"User deleted ",Toast.LENGTH_SHORT).show();
+                             }else{
+                                 Toast.makeText(getContext(),"User is not deleted ",Toast.LENGTH_SHORT).show();
+                             }
+                     });
+
+                 });
+
+                 // Set the Negative button with No name
+                 // OnClickListener method is use
+                 // of DialogInterface interface.
+                 builder.setNegativeButton("No", (dialog, which) -> {
+                     // If user click no
+                     // then dialog box is canceled.
+                     dialog.cancel();
+                 });
+                 // Create the Alert dialog
+                 AlertDialog alertDialog = builder.create();
+
+                 // Show the Alert Dialog box
+                 alertDialog.show();
+
+
+
+                 //to remove user
+
+
+             });
+             //navigate to email interface
+             emailBtn.setOnClickListener((v) -> {
+
+                     String adminEmail =mAuth.getCurrentUser().getEmail();
+                     UsersFragmentDirections.ActionNavUsersToSendEmailFragment action= UsersFragmentDirections.actionNavUsersToSendEmailFragment();
+
+                     action.setEmailId(customer.getEmail());
+                     action.setAdminEmailId(adminEmail);
+                     navController.navigate(action);
+             });
+
+             editBtn.setOnClickListener((v) -> {
+                 UsersFragmentDirections.ActionNavUsersToNavEditUser action = UsersFragmentDirections.actionNavUsersToNavEditUser();
+                 action.setUserName(customer.getUserName());
+                 action.setPassword(customer.getPassword());
+                 action.setUserEmailId(customer.getEmail());
+                 navController.navigate(action);
+
+             });
           }
 
         });
+
+
     }
+
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
+
 
 }
