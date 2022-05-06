@@ -62,6 +62,17 @@
     <string name="personphone">pphone</string>
     <string name="personmail">pmail</string>
     <string name="personaddress">paddress</string>
+    <string name="conscent">conscent</string>
+    <string name="c1">c1</string>
+    <string name="c2">conscent2</string>
+    <string name="c3">conscent3</string>
+    <string name="c4">conscent4</string>
+    <string name="text01">txt1</string>
+    <string name="text02">txt2</string>
+    <string name="text03">txt3</string>
+    <string name="text04">txt4</string>
+    <string name="agreebtn">agree</string>
+    <string name="backbtn">back</string>
 
     <string-array name="genders">
         <item>Male</item>
