@@ -21,19 +21,28 @@ public class EmailFragment extends Fragment {
 
 
     private FragmentEmailBinding binding;
-
-
+    private EmailViewModel emailViewModel;
+    private  TextView textView;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                             Bundle savedInstanceState) {
-        EmailViewModel emailViewModel = new ViewModelProvider(this).get(EmailViewModel.class);
+        emailViewModel = new ViewModelProvider(this).get(EmailViewModel.class);
         binding = FragmentEmailBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         //just like find view by id
-        final TextView textView = binding.textEmail;
-        emailViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+      //  textView = binding.textEmail;
+
         return root;
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //get the args values
+
+        //emailViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

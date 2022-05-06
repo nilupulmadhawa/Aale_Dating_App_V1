@@ -156,7 +156,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     customer.setUserName(username);
                                     customer.setEmail(userEmail);
                                     customer.setPassword(userPasssword);
-                                    customer.setUserType("customer");
+
                                     //get user inputs and assigning them into stdObject
 
                                     //pass child value as the key

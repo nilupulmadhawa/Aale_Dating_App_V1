@@ -5,7 +5,7 @@ import android.net.Uri;
 public abstract class User {
     protected String userID;
     protected String userName;
-    protected String userType;
+
     protected String email;
     protected String password;
     private String profilePic;
@@ -29,13 +29,7 @@ public abstract class User {
         this.userName = userName;
     }
 
-    public String getUserType() {
-        return userType;
-    }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
 
     public String getEmail() {
         return email;

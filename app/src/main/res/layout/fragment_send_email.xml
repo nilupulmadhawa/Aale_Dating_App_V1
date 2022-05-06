@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.add_user.AddUserFragment">
-
+    tools:context=".ui.send_email.SendEmailFragment">
     <androidx.cardview.widget.CardView
         android:layout_width="627dp"
         android:layout_height="310dp"
@@ -20,147 +19,129 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:layout_width="297dp"
+                android:layout_width="309dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="25dp">
+                android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edt_sender_email_layout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:id="@+id/edt_user_name_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/user_name"
-                    app:helperText="Required"
-                    app:helperTextTextColor="@color/red"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="15"
-                    app:endIconMode="clear_text"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edt_user_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:maxLength="15"
-                        android:inputType="textPersonName" />
 
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:id="@+id/edt_receiver_email_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/user_email"
-                    app:helperText="Required"
-                    app:helperTextTextColor="@color/red"
+                    android:hint="@string/sender_email"
                     app:counterEnabled="true"
                     app:counterMaxLength="50"
                     app:endIconMode="clear_text"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    >
+                    app:helperText="Required"
+                    app:helperTextTextColor="@color/red">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edt_user_email"
+                        android:id="@+id/edt_sender_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:maxLength="50"
-                        android:inputType="textEmailAddress" />
+
+                        android:inputType="textEmailAddress"
+                        android:maxLength="50" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edt_receiver_email_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
+                    android:hint="@string/receiver_email"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="50"
+                    app:endIconMode="clear_text"
+                    app:helperText="Required"
+                    app:helperTextTextColor="@color/red">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_receiver_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="50" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edt_subject_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:hint="@string/subject"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="15"
+                    app:endIconMode="clear_text"
+                    app:helperText="Required"
+                    app:helperTextTextColor="@color/red">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_subject"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:ems="10"
+                        android:inputType="textEmailSubject"
+                        android:maxLength="50" />
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="25dp"
-                android:layout_width="match_parent"
+                android:layout_width="304dp"
                 android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical">
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:id="@+id/edt_password_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/password"
-                    app:helperText="Required"
-                    app:helperTextTextColor="@color/red"
-                    app:counterEnabled="true"
-                    app:endIconMode="password_toggle"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    app:counterMaxLength="20"
-                    >
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edt_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:maxLength="20"
-                        android:inputType="textPassword"
-                        android:minHeight="48dp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/edt_confirm_password_layout"
+                    android:id="@+id/edt_message_layout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:helperText="Required"
-                    app:helperTextTextColor="@color/red"
+                    android:layout_height="197dp"
+                    android:hint="@string/message"
                     app:counterEnabled="true"
-                    app:counterMaxLength="20"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    app:endIconMode="password_toggle"
-                    android:hint="@string/confirm_password">
+                    app:counterMaxLength="250"
+                    app:endIconMode="clear_text"
+                    app:helperText="Required"
+                    app:helperTextTextColor="@color/red">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edt_confirm_password"
+                        android:id="@+id/edt_message"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="137dp"
                         android:ems="10"
-                        android:maxLength="20"
-                        android:inputType="textPassword"
-                        android:minHeight="48dp" />
+                        android:inputType="textWebEditText"
+                        android:maxLength="250" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_send_mail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="190dp"
-                    android:layout_marginEnd="20dp"
-                    android:textSize="12dp"
+
                     android:background="@color/red"
-                    app:cornerRadius="10dp"
+                    android:text="@string/send_email"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"
                     app:backgroundTint="@color/red"
-                    android:text="@string/add_admin" />
+                    app:cornerRadius="10dp" />
+
             </LinearLayout>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
