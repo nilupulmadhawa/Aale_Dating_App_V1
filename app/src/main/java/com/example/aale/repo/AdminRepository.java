@@ -1,5 +1,6 @@
 package com.example.aale.repo;
 
+<<<<<<< HEAD
 import android.util.Log;
 import android.widget.Toast;
 
@@ -14,13 +15,19 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+=======
+import com.example.aale.model.Email;
+>>>>>>> swpie
 import com.google.firebase.database.DatabaseReference;
 
 
 public class AdminRepository {
     private static final DatabaseReference emailRef = DBConnectionRepository.getEmailReference();
+<<<<<<< HEAD
     private static final DatabaseReference adminRef = DBConnectionRepository.getAdminReference();
     private FirebaseAuth mAuth;
+=======
+>>>>>>> swpie
     private OnAdminTaskTaskComplete onAdminTaskTaskComplete;
 
     public AdminRepository(OnAdminTaskTaskComplete onAdminTaskTaskComplete) {
@@ -33,11 +40,16 @@ public class AdminRepository {
                    onAdminTaskTaskComplete.onMessageSendSuccess(1);
 
             } else {
+<<<<<<< HEAD
                    onAdminTaskTaskComplete.onMessageSendUnSuccess(-1);
+=======
+                   onAdminTaskTaskComplete.onMessageSendUnsuccess(-1);
+>>>>>>> swpie
             }
         });
 
     }
+<<<<<<< HEAD
     public void addAdmin(Admin admin){
         mAuth=FirebaseAuth.getInstance();
 
@@ -112,6 +124,11 @@ public class AdminRepository {
         void onAdminCreationSuccess(Integer creationSuccessState);
         void onAdminCreationUnSuccess(Integer creationUnSuccessState);
         void onAdminDetailsStoreUnSuccess(Integer storeUnSuccessState);
+=======
+    public interface  OnAdminTaskTaskComplete{
+        void onMessageSendSuccess(Integer sentState);
+        void onMessageSendUnsuccess(Integer sentState);
+>>>>>>> swpie
 
 
     }

@@ -60,15 +60,26 @@ public class SendEmailFragment extends Fragment {
             receiverEmail.setText(args.getEmailId());
         }
 
+<<<<<<< HEAD
 
+=======
+        email.setSender(senderEmail.getText().toString());
+        email.setReceiver(receiverEmail.getText().toString());
+        email.setMessage(message.getText().toString());
+        email.setSubject(subject.getText().toString());
+>>>>>>> swpie
 
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
                 email.setSender(senderEmail.getText().toString());
                 email.setReceiver(receiverEmail.getText().toString());
                 email.setMessage(message.getText().toString());
                 email.setSubject(subject.getText().toString());
+=======
+
+>>>>>>> swpie
 
                 if(!email.getMessage().equals("")&&!email.getSubject().equals("")){
                     sendEmailViewModel.sendEmail(email).observe(getViewLifecycleOwner(),integer -> {
