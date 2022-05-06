@@ -29,8 +29,8 @@ public class SwipesFragment extends Fragment {
         SwipesViewModel swipesViewModel = new ViewModelProvider(this).get(SwipesViewModel.class);
         binding =  FragmentSwipesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        final TextView textView = binding.textSwipes;
-        swipesViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+      //  final TextView textView = binding.textSwipes;
+     //   swipesViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
     @Override

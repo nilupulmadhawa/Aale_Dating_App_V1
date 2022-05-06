@@ -56,16 +56,8 @@
     <string name="subject">Subject</string>
     <string name="message">Message</string>
     <string name="send_email">Send Email</string>
-<<<<<<< HEAD
     <string name="User_logout">Log Out</string>
     <string name="user_profile">User Profile Activity</string>
-=======
-    <string name="name">text1</string>
-    <string name="tp">Telephone No.</string>
-    <string name="personname">pn1</string>
-    <string name="personphone">pphone</string>
-    <string name="personmail">pmail</string>
->>>>>>> parent of 218af39 (Changes)
 
     <string-array name="genders">
         <item>Male</item>
@@ -76,4 +68,14 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="swipee_author">Author</string>
+    <string name="swipe_author">Author</string>
+    <string name="swipe_seen">Seen</string>
+    <string name="swipe_type">Type</string>
+    <string name="swipe_date">Date</string>
+    <string name="swipe_profile_swiped">Profile Swiped</string>
+    <string name="swipe_actions">Actions</string>
+    <string name="textviewdfsdfdfsdf">TextViewdfsdfdfsdf</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
