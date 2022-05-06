@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 
+import com.example.aale.AdminActivity;
+import com.example.aale.UserActivity;
 import com.example.aale.databinding.ActivityLoginBinding;
 import com.example.aale.repo.DBConnectionRepository;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,6 +34,7 @@ import com.google.firebase.database.DatabaseReference;
 public class LoginActivity extends Activity {
     private ActivityLoginBinding binding;
     private FirebaseAuth mAuth;
+
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
 
 
@@ -79,7 +82,7 @@ public class LoginActivity extends Activity {
                         public void onSuccess(DataSnapshot dataSnapshot) {
                             if(dataSnapshot.hasChild(userId)){
                                 Log.i("log","logged in");
-                                Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+                                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
                                 startActivity(intent);
                                 finish();
                                 return;
