@@ -56,6 +56,11 @@
     <string name="subject">Subject</string>
     <string name="message">Message</string>
     <string name="send_email">Send Email</string>
+    <string name="name">text1</string>
+    <string name="tp">Telephone No.</string>
+    <string name="personname">pn1</string>
+    <string name="personphone">pphone</string>
+    <string name="personmail">pmail</string>
 
     <string-array name="genders">
         <item>Male</item>
