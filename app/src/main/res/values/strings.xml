@@ -77,13 +77,15 @@
     <string name="backbtn">back</string>
     <string name="User_logout">Log Out</string>
     <string name="user_profile">User Profile Activity</string>
+<<<<<<< Updated upstream
 
 
 
+=======
+>>>>>>> Stashed changes
     <string-array name="genders">
         <item>Male</item>
         <item>Female</item>
-
     </string-array>
     <string name="title_activity_user_profile">UserProfileActivity</string>
     <string name="title_home">Home</string>
