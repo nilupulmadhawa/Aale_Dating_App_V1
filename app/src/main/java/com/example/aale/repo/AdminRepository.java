@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 public class AdminRepository {
     private static final DatabaseReference emailRef = DBConnectionRepository.getEmailReference();
     private static final DatabaseReference adminRef = DBConnectionRepository.getAdminReference();
+    private static  final DatabaseReference cusRef =DBConnectionRepository.getCustomerReference();
     private FirebaseAuth mAuth;
     private OnAdminTaskTaskComplete onAdminTaskTaskComplete;
 
@@ -74,12 +75,12 @@ public class AdminRepository {
 
     }
     public void updateUser(Customer customer){
-        emailRef.child(customer.getUserID()).setValue(customer).addOnCompleteListener(task -> {
+        cusRef.child(customer.getUserID()).setValue(customer).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-               // onAdminTaskTaskComplete.onMessageSendSuccess(1);
+               onAdminTaskTaskComplete.onCustomerUpdateSuccess(1);
 
             } else {
-              //  onAdminTaskTaskComplete.onMessageSendUnSuccess(-1);
+                onAdminTaskTaskComplete.onCustomerUpdateUnSuccess(-1);
             }
         });
 
@@ -91,6 +92,8 @@ public class AdminRepository {
         void onAdminCreationSuccess(Integer creationSuccessState);
         void onAdminCreationUnSuccess(Integer creationUnSuccessState);
         void onAdminDetailsStoreUnSuccess(Integer storeUnSuccessState);
+        void onCustomerUpdateSuccess(Integer updateSuccessState);
+        void onCustomerUpdateUnSuccess(Integer updateUnSuccessState);
 
     }
 }

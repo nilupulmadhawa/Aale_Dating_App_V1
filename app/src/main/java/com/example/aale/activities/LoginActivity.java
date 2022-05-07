@@ -150,6 +150,8 @@ public class LoginActivity extends Activity {
         mAuth.removeAuthStateListener(firebaseAuthStateListener);
     }
 
-
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }
