@@ -16,6 +16,14 @@
             android:name=".UserActivity"
             android:exported="false" />
         <activity
+
+            android:name=".Conscent"
+            android:exported="false" />
+        <activity
+            android:name=".SwipeActivity"
+            android:exported="false" />
+   
+        <activity
             android:name=".activities.RegisterActivity"
             android:exported="false"
             android:label="@string/title_activity_register" />
