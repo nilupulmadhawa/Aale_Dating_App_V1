@@ -50,14 +50,4 @@ public class AddUserViewModel extends ViewModel implements  AdminRepository.OnAd
     public void onAdminDetailsStoreUnSuccess(Integer storeUnSuccessState) {
         admin_added.setValue(storeUnSuccessState);
     }
-
-    @Override
-    public void onCustomerUpdateSuccess(Integer updateSuccessState) {
-
-    }
-
-    @Override
-    public void onCustomerUpdateUnSuccess(Integer updateUnSuccessState) {
-
-    }
 }

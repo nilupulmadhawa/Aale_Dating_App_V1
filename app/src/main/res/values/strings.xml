@@ -78,4 +78,44 @@
     <string name="textviewdfsdfdfsdf">TextViewdfsdfdfsdf</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+	
+	
+	<string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="insert_ad_id">AdID</string>
+    <string name="insert_ad_title">Ad Title</string>
+    <string name="insert_company">Company Name</string>
+    <string name="insert_description">Description</string>
+    <string name="add_new_ad_btn2">Add New AD</string>
+    <string name="add_new_ad_btn3">Create Ad</string>
+    <string name="insert_ad_id1">AdID</string>
+    <string name="insert_ad_title1">Ad Title</string>
+    <string name="insert_company1">Company Name</string>
+    <string name="select_cat1">Category</string>
+    <string name="insert_des1">Description</string>
+    <string name="choose_img_btn1">Choose Image</string>
+    <string name="create_ad_btn1">Create Ad</string>
+    <string name="add_new_ad_text">Advertisement Handling</string>
+    <string name="add_new_ad_btn">Add New Ad</string>
+    <string name="action_col6">Actions</string>
+    <string name="ad_pic_col5">Picture</string>
+    <string name="company_col4">Company</string>
+    <string name="category_col3">Category</string>
+    <string name="ad_title_col2">Ad Title</string>
+    <string name="ad_id_col1">AdID</string>
+    <string name="push">Push Notification</string>
+    <string name="add_new_user">Add New User</string>
+    <string name="f_name_col1">First Name</string>
+    <string name="company_col2">Last Name</string>
+    <string name="l_name_col2">Last Name</string>
+    <string name="mail_col3">Email</string>
+    <string name="user_pic_col4">Picture</string>
+    <string name="col5_actions">Action</string>
+    <string name="ad_send_all1">Send to All</string>
+    <string name="add_new_ad">Add New Add</string>
+	
 </resources>

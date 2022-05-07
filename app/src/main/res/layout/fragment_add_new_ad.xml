@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.add_new_ad.AdvertisementsNewAddFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="31dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="309dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/insert_ad_id_layout1"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            app:endIconMode="clear_text"
+                            app:helperText="Required"
+                            app:helperTextTextColor="@color/red">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/insert_ad_id1"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:ems="10"
+                                android:hint="@string/insert_ad_id1" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/insert_ad_title_layout1"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+
+                            android:hint="@string/insert_ad_title1"
+                            app:endIconMode="clear_text"
+                            app:helperText="Required"
+                            app:helperTextTextColor="@color/red">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/insert_ad_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/cat_layout"
+
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+
+                            android:hint="Select Category"
+                            android:text="Food"
+                            app:endIconMode="clear_text"
+                            app:helperText="Required"
+                            app:helperTextTextColor="@color/red">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/autoCompleteText1"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:enabled="false"
+                                android:inputType="none"
+                                android:textColor="#000" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/insert_company_layout1"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+
+                            app:endIconMode="clear_text"
+                            app:helperText="Required"
+                            app:helperTextTextColor="@color/red">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/insert_company1"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:hint="@string/insert_company" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="304dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/insert_des_layout1"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:ems="10"
+                            app:endIconMode="clear_text">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/insert_des1"
+                                android:layout_width="match_parent"
+                                android:layout_height="115dp"
+                                android:hint="@string/insert_des1" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="103dp">
+
+                            <ImageView
+                                android:id="@+id/imageView2"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_weight="1"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:src="@tools:sample/avatars" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/choose_img_btn1"
+                                android:layout_width="180dp"
+                                android:layout_height="48dp"
+                                android:layout_marginStart="13dp"
+                                android:layout_marginTop="45dp"
+                                android:text="@string/choose_img_btn1"
+                                android:textColor="@color/white"
+                                android:textSize="12dp"
+                                app:backgroundTint="@color/cardview_dark_background"
+                                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/create_ad_btn1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/create_ad_btn1"
+                            android:textColor="@color/white"
+                            android:textSize="12dp"
+                            app:backgroundTint="@color/red" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

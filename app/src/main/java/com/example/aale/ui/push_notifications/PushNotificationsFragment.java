@@ -29,8 +29,8 @@ public class PushNotificationsFragment extends Fragment {
         PushNotificationsViewModel pushNotificationsViewModel = new ViewModelProvider(this).get(PushNotificationsViewModel.class);
         binding = FragmentPushNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        final TextView textView = binding.textPushNotifications;
-        pushNotificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+       // final TextView textView = binding.textPushNotifications;
+      //  pushNotificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
     @Override
