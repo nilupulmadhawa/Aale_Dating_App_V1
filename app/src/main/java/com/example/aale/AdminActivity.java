@@ -98,4 +98,14 @@ public class AdminActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mAuth.signOut();
+        Log.i("logged our","out");
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+        finish();
+
+    }
 }
