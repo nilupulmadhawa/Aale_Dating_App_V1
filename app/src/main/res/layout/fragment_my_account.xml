@@ -4,19 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#bfbfbf"
     tools:context=".ui.my_account.MyAccountFragment">
 
-    <TextView
-        android:id="@+id/text_my_account"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="694dp"
+                android:layout_height="181dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="348dp"
+                    android:layout_height="match_parent">
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="331dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="9dp" />
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="689dp"
+                android:layout_height="300dp"
+
+                android:layout_marginTop="50dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="689dp"
+                android:layout_height="400dp"
+
+                android:layout_marginTop="50dp">
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
