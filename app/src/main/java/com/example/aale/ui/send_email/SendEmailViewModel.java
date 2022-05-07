@@ -56,14 +56,4 @@ public class SendEmailViewModel extends ViewModel implements  AdminRepository.On
         public void onAdminDetailsStoreUnSuccess(Integer storeUnSuccessState) {
             admin_added.setValue(storeUnSuccessState);
         }
-
-        @Override
-        public void onCustomerUpdateSuccess(Integer updateSuccessState) {
-
-        }
-
-        @Override
-        public void onCustomerUpdateUnSuccess(Integer updateUnSuccessState) {
-
-        }
 }

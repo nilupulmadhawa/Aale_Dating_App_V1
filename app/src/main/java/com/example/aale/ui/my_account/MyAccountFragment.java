@@ -29,8 +29,8 @@ public class MyAccountFragment extends Fragment {
         MyAccountViewModel myAccountViewModel = new ViewModelProvider(this).get( MyAccountViewModel.class);
         binding = FragmentMyAccountBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-      //  final TextView textView = binding.textMyAccount;
-     //   myAccountViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textMyAccount;
+        myAccountViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
     @Override
