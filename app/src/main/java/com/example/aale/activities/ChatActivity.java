@@ -8,12 +8,14 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.chatty.adapters.ChatAdapter;
-import com.example.chatty.databinding.ActivityChatBinding;
-import com.example.chatty.models.ChatMessage;
-import com.example.chatty.models.User;
-import com.example.chatty.utilities.Constants;
-import com.example.chatty.utilities.PreferenceManager;
+
+import com.example.aale.adapters.ChatAdapter;
+import com.example.aale.databinding.ActivityChatBinding;
+import com.example.aale.model.ChatMessage;
+
+import com.example.aale.model.User;
+import com.example.aale.utilities.Constants;
+import com.example.aale.utilities.PreferenceManager;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;

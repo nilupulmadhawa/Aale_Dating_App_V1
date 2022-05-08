@@ -7,7 +7,7 @@ public class PreferenceManager {
     private final SharedPreferences sharedPreferences;
 
     public PreferenceManager(Context context){
-        sharedPreferences = context.getSharedPreferences(com.example.chatty.utilities.Constants.KEY_PREFERENCE_NAME,Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences(com.example.aale.utilities.Constants.KEY_PREFERENCE_NAME,Context.MODE_PRIVATE);
     }
 
     public void putBoolean(String key , Boolean value){
