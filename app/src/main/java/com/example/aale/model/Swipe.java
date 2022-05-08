@@ -5,19 +5,18 @@ public class Swipe {
     private String swipe_id;
 
     // person who has swiped person
-    private String author;
-    private String swiped_by;
+    private String swiped;
     private String swiped_date;
     private String swiped_time;
     private String swipe_type;
     private boolean seen_status;
 
     public String getSwiped() {
-        return author;
+        return swiped;
     }
 
-    public void setSwiped(String author) {
-        this.author = author;
+    public void setSwiped(String swiped) {
+        this.swiped = swiped;
     }
 
     public Swipe() {

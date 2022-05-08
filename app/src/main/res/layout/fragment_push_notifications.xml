@@ -6,17 +6,152 @@
     android:layout_height="match_parent"
     tools:context=".ui.push_notifications.PushNotificationsFragment">
 
-    <TextView
-        android:id="@+id/text_push_notifications"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+   <androidx.cardview.widget.CardView
+        android:layout_width="627dp"
+        android:layout_height="310dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/push"
+                android:layout_width="190dp"
+                android:layout_height="55dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:text="@string/push"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/add_new_user"
+                android:layout_width="wrap_content"
+                android:layout_height="43dp"
+                android:layout_above="@+id/table_scroll"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="29dp"
+                android:layout_marginBottom="4dp"
+                android:backgroundTint="@color/red"
+                android:gravity="end"
+                android:text="@string/add_new_user"
+                android:textColor="#ffffff"
+                android:textSize="15sp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <ScrollView
+                android:id="@+id/table_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="202dp"
+                android:layout_below="@+id/push"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp">
+
+                <TableLayout
+                    android:id="@+id/table_push_notification"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/push"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+
+                    android:layout_marginBottom="0dp"
+                    android:background="@drawable/table_border">
+
+                    <TableRow
+                        android:id="@+id/table_header"
+                        android:layout_width="612dp"
+                        android:layout_height="34dp">
+
+                        <TextView
+                            android:id="@+id/f_name_col1"
+                            android:layout_width="114dp"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            tools:text="@string/f_name_col1" />
+
+                        <TextView
+                            android:id="@+id/l_name_col2"
+                            android:layout_width="114dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/company_col2"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            tools:text="@string/l_name_col2" />
+
+                        <TextView
+                            android:id="@+id/mail_col3"
+                            android:layout_width="168dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/category_col3"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            tools:text="@string/mail_col3" />
+
+                        <TextView
+                            android:id="@+id/user_pic_col4"
+                            android:layout_width="68dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/user_pic_col4"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            tools:text="@string/user_pic_col4" />
+
+                        <TextView
+                            android:id="@+id/col5_actions"
+                            android:layout_width="163dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/col5_actions"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            tools:text="@string/col5_actions" />
+
+                    </TableRow>
+                </TableLayout>
+            </ScrollView>
+
+            <Button
+                android:id="@+id/ad_send_all1"
+                android:layout_width="178dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="19dp"
+                android:layout_marginBottom="4dp"
+                android:backgroundTint="@color/red"
+                android:text="@string/ad_send_all1" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -244,15 +244,10 @@ public class UsersFragment extends Fragment  {
              });
 
              editBtn.setOnClickListener((v) -> {
-                 //once edit button i clicked add user profile values as action parameters
                  UsersFragmentDirections.ActionNavUsersToNavEditUser action = UsersFragmentDirections.actionNavUsersToNavEditUser();
                  action.setUserName(customer.getUserName());
-                 action.setUserId(customer.getUserID());
                  action.setPassword(customer.getPassword());
                  action.setUserEmailId(customer.getEmail());
-                 action.setGender(customer.getGender());
-                 action.setLookingFor(customer.getLooking_for());
-                 action.setPhoneNumber(customer.getPhone_number());
                  navController.navigate(action);
 
              });
