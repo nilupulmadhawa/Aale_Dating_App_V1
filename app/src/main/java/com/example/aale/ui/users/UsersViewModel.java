@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.aale.model.Advertisement;
 import com.example.aale.model.Customer;
 import com.example.aale.repo.CommonRepository;
 
@@ -45,11 +44,6 @@ public class UsersViewModel extends ViewModel implements CommonRepository.OnFire
     }
 
     @Override
-    public void advertisementListDataAdded(List<Advertisement> advertisements) {
-
-    }
-
-    @Override
     public void onRetrievalError(Exception e) {
 
     }
@@ -64,26 +58,6 @@ public class UsersViewModel extends ViewModel implements CommonRepository.OnFire
     @Override
     public void onUserDeleteError(Integer deleteStates) {
         deleteState.setValue(deleteStates);
-    }
-
-    @Override
-    public void onAdDeleteTaskComplete(Integer deleteStates) {
-
-    }
-
-    @Override
-    public void onAdvertisementSuccess(Integer addSuccess) {
-
-    }
-
-    @Override
-    public void onAdvertisementUnSuccess(Integer addSuccess) {
-
-    }
-
-    @Override
-    public void onAdDeleteError(Integer deleteStates) {
-
     }
 
 
