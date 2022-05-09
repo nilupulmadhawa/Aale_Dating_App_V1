@@ -5,13 +5,10 @@ package com.example.aale;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 
-import com.example.aale.activities.LoginActivity;
 import com.example.aale.databinding.ActivityUserBinding;
 import com.example.aale.ui.chat_bubble.ChatBubbleFragment;
 import com.example.aale.ui.find_lover.FindLoverFragment;
@@ -19,12 +16,11 @@ import com.example.aale.ui.user_profile.UserProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class UserActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener{
 
     private ActivityUserBinding binding;
-    private FirebaseAuth mAuth=FirebaseAuth.getInstance();
+
     NavigationBarView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,16 +54,5 @@ public class UserActivity extends AppCompatActivity implements NavigationBarView
                 return true;
         }
         return false;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mAuth.signOut();
-        Log.i("logged our","out");
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(intent);
-        finish();
-
     }
 }
