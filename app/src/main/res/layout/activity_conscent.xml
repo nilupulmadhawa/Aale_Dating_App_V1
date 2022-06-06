@@ -192,6 +192,7 @@
         android:layout_width="227dp"
         android:layout_height="83dp"
         android:clickable="true"
+
         android:text="I Agree."
         android:textColor="#EF0A0A"
         android:textSize="34sp"

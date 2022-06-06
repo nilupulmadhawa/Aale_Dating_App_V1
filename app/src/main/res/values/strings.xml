@@ -66,8 +66,28 @@
     <string name="subject">Subject</string>
     <string name="message">Message</string>
     <string name="send_email">Send Email</string>
+
+    <string name="name">text1</string>
+    <string name="tp">Telephone No.</string>
+    <string name="personname">pn1</string>
+    <string name="personphone">pphone</string>
+    <string name="personmail">pmail</string>
+    <string name="personaddress">paddress</string>
+    <string name="conscent">conscent</string>
+    <string name="c1">c1</string>
+    <string name="c2">conscent2</string>
+    <string name="c3">conscent3</string>
+    <string name="c4">conscent4</string>
+    <string name="text01">txt1</string>
+    <string name="text02">txt2</string>
+    <string name="text03">txt3</string>
+    <string name="text04">txt4</string>
+    <string name="agreebtn">agree</string>
+    <string name="backbtn">back</string>
+
     <string name="User_logout">Log Out</string>
     <string name="user_profile">User Profile Activity</string>
+
 
     <string-array name="genders">
         <item>Male</item>

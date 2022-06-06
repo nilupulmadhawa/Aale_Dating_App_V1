@@ -13,7 +13,17 @@
         android:theme="@style/Theme.Aale"
         android:usesCleartextTraffic="true">
         <activity
+
+            android:name=".Conscent"
+            android:exported="false" />
+        <activity
+            android:name=".SwipeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".customerprofile"
+
             android:name=".UserActivity"
+
             android:exported="false" />
         <activity
             android:name=".activities.RegisterActivity"
