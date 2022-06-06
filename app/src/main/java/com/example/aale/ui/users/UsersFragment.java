@@ -32,6 +32,7 @@ import android.widget.Toast;
 import com.example.aale.R;
 import com.example.aale.databinding.FragmentUsersBinding;
 import com.example.aale.model.Customer;
+import com.example.aale.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -75,39 +76,38 @@ public class UsersFragment extends Fragment  {
               TableRow row = new TableRow(getContext());
 
               //add values
-              //add to atble
+              //add to able
               row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableRow.LayoutParams.WRAP_CONTENT));
               row.setMinimumHeight((int)(1.5*34));
-              //add valuew to row
-              TextView firstName = new TextView(getContext());
-              TextView lastName = new TextView(getContext());
+
+              //add value to row
+              TextView userName = new TextView(getContext());
+              TextView mobileNo = new TextView(getContext());
               TextView email = new TextView(getContext());
-              TextView userType = new TextView(getContext());
+              TextView gender= new TextView(getContext());
 
-              TextView password = new TextView(getContext());
-              //set aligment
-              firstName.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-              lastName.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+              //set alignment
+              userName.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+              mobileNo.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
               email.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-              userType.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+              gender.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-              password.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
               //give text Size
-              //from sp
-              firstName.setTextSize(9);
-              lastName.setTextSize(9);
+              userName.setTextSize(9);
+              mobileNo.setTextSize(9);
               email.setTextSize(9);
-              userType.setTextSize(9);
+              gender.setTextSize(9);
               email.setId((int)System.currentTimeMillis()/100000);
 
-              password.setTextSize(9);
-             //set values
-              firstName.setText(customer.getUserName());
 
-              lastName.setText(customer.getPhone_number().toString());
+              //set values
+              userName.setText(customer.getUserName());
+
+              mobileNo.setText(customer.getPhone_number().toString());
               email.setText(customer.getEmail());
-              userType.setText(customer.getGender());
+              gender.setText(customer.getGender());
 
               //Do not give layout parameters for linear layout
               //for button in the table
@@ -116,59 +116,55 @@ public class UsersFragment extends Fragment  {
               linearLayout.setOrientation(LinearLayout.HORIZONTAL);
               linearLayout.setGravity(Gravity.CENTER);
 
+              LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                      64,64);
+
+              layoutParams.setMargins(0, 0, 30, 0);
               //initialize email btn
               ImageButton emailBtn= new ImageButton(getContext());
-              emailBtn.setLayoutParams(new LinearLayout.LayoutParams(64,64));
+              emailBtn.setLayoutParams(new LinearLayout.LayoutParams(layoutParams));
               emailBtn.setBackgroundResource(R.drawable.admin_mail);
               emailBtn.setId(customer.getPhone_number());
               emailBtn.setMaxHeight(64);
               emailBtn.setMaxWidth(64);
-
-              //add email btn to linera lay out
               emailBtn.setEnabled(true);
 
               //initialize edit btn
               Button  editBtn= new Button(getContext());
-              editBtn.setLayoutParams(new LinearLayout.LayoutParams(64,64));
+              editBtn.setLayoutParams( layoutParams);
 
-             // editBtn
+              //editBtn
               editBtn.setId(customer.getPhone_number()+1);
               editBtn.setMaxHeight(64);
               editBtn.setBackgroundResource(R.drawable.admin_edit);
               editBtn.setMaxWidth(64);
               editBtn.setEnabled(true);
 
-              //add email btn to linera lay out
-
-
 
               //initialize email btn
               Button  deleteBtn= new Button(getContext());
               deleteBtn.setLayoutParams(new LinearLayout.LayoutParams(64,64));
-
+              //set button attributes
               deleteBtn.setId(customer.getPhone_number()+2);
               deleteBtn.setMaxHeight(64);
               deleteBtn.setMaxWidth(64);
               deleteBtn.setEnabled(true);
               deleteBtn.setBackgroundResource(R.drawable.admin_delete);
-
+              //add button to linearlayout
               linearLayout.addView(emailBtn);
               linearLayout.addView(editBtn);
               linearLayout.addView(deleteBtn);
-
-
-
-
-              row.addView(firstName);
-              row.addView(lastName);
+              //add views to row
+              row.addView(userName);
+              row.addView(mobileNo);
               row.addView(email);
-              row.addView(userType);
+              row.addView(gender);
               row.addView(linearLayout);
 
               userTable.addView(row);
 
               //alert on delete
-             deleteBtn.setOnClickListener(v -> {
+              deleteBtn.setOnClickListener(v -> {
 
                  AlertDialog.Builder builder
                          = new AlertDialog
@@ -237,7 +233,19 @@ public class UsersFragment extends Fragment  {
                      navController.navigate(action);
              });
 
-             editBtn.setOnClickListener(v -> navController.navigate(R.id.action_nav_users_to_nav_edit_user));
+             editBtn.setOnClickListener((v) -> {
+                 //once edit button i clicked add user profile values as action parameters
+                 UsersFragmentDirections.ActionNavUsersToNavEditUser action = UsersFragmentDirections.actionNavUsersToNavEditUser();
+                 action.setUserName(customer.getUserName());
+                 action.setUserId(customer.getUserID());
+                 action.setPassword(customer.getPassword());
+                 action.setUserEmailId(customer.getEmail());
+                 action.setGender(customer.getGender());
+                 action.setLookingFor(customer.getLooking_for());
+                 action.setPhoneNumber(customer.getPhone_number());
+                 navController.navigate(action);
+
+             });
           }
 
         });

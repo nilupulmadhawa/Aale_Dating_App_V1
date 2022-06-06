@@ -78,6 +78,34 @@
         <action
             android:id="@+id/action_nav_edit_user_to_nav_users"
             app:destination="@id/nav_users" />
+        <argument
+            android:name="user_name"
+            app:argType="string"
+            android:defaultValue="user name" />
+        <argument
+            android:name="user_email_id"
+            app:argType="string"
+            android:defaultValue="user_email_id" />
+        <argument
+            android:name="password"
+            app:argType="string"
+            android:defaultValue="password" />
+        <argument
+            android:name="user_id"
+            app:argType="string"
+            android:defaultValue="userid" />
+        <argument
+            android:name="gender"
+            app:argType="string"
+            android:defaultValue="male" />
+        <argument
+            android:name="looking_for"
+            app:argType="string"
+            android:defaultValue="Female" />
+        <argument
+            android:name="phone_number"
+            app:argType="integer"
+            android:defaultValue="755297678" />
     </fragment>
     <fragment
         android:id="@+id/send_email_fragment"

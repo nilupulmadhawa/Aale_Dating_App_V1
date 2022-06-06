@@ -1,18 +1,17 @@
-package com.example.aale.activities;
+package com.example.aale;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.Menu;
-import android.view.View;
 import android.widget.Toast;
 
-import com.example.aale.R;
+import com.example.aale.activities.LoginActivity;
+import com.example.aale.databinding.ActivityMainBinding;
 import com.example.aale.ui.users.UsersFragment;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -20,7 +19,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.aale.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminActivity extends AppCompatActivity {
@@ -95,7 +93,7 @@ public class AdminActivity extends AppCompatActivity {
         //logout from the system
         mAuth.signOut();
         Log.i("logged our","out");
-        Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
         finish();
     }

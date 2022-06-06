@@ -76,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if(user != null){
 
                     Log.i("reg","logged in");
-                    Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                     finish();
                     return;

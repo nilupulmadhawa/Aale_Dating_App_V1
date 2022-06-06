@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#bfbfbf"
     tools:context=".ui.add_user.AddUserFragment">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="627dp"
         android:layout_height="310dp"
         android:layout_gravity="center"
@@ -60,7 +61,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:id="@+id/edt_receiver_email_layout"
+                    android:id="@+id/edt_user_email_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user_email"
@@ -79,6 +80,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
+
                         android:maxLength="50"
                         android:inputType="textEmailAddress" />
 
@@ -146,21 +148,28 @@
 
 
 
+                <Button
+                    android:id="@+id/btn_add_user"
+                    android:layout_width="100dp"
+                    android:layout_height="47dp"
 
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_send_mail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="190dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="end"
                     android:layout_marginEnd="20dp"
-                    android:textSize="12dp"
-                    android:background="@color/red"
-                    app:cornerRadius="10dp"
-                    app:backgroundTint="@color/red"
-                    android:text="@string/add_admin" />
+                    android:layout_marginBottom="2dp"
+
+                    android:backgroundTint="@color/red"
+                    android:enabled="true"
+
+
+                    android:text="@string/add_admin"
+                    android:textColor="#ffffff"
+                    android:textSize="10sp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+
+
             </LinearLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

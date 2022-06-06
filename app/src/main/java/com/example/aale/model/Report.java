@@ -6,7 +6,7 @@ public class Report {
     private String author;
     private String report_type;
     private String reported_date;
-    private String reportEd_time;
+
 
     public String getReport_id() {
         return report_id;
@@ -48,13 +48,7 @@ public class Report {
         this.reported_date = reported_date;
     }
 
-    public String getReportEd_time() {
-        return reportEd_time;
-    }
 
-    public void setReportEd_time(String reportEd_time) {
-        this.reportEd_time = reportEd_time;
-    }
 
     public Report() {
     }

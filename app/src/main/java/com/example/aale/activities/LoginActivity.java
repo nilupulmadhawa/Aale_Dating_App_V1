@@ -15,19 +15,26 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.aale.activities.AdminActivity;
-import com.example.aale.activities.RegisterActivity;
+
+import com.example.aale.AdminActivity;
+import com.example.aale.UserActivity;
 import com.example.aale.databinding.ActivityLoginBinding;
+import com.example.aale.repo.DBConnectionRepository;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
 
 
 public class LoginActivity extends Activity {
     private ActivityLoginBinding binding;
     private FirebaseAuth mAuth;
+
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
 
 
@@ -42,12 +49,56 @@ public class LoginActivity extends Activity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 final FirebaseUser user =FirebaseAuth.getInstance().getCurrentUser();
+
+
                 if(user != null){
-                    Log.i("log","logged in");
-                    Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-                    startActivity(intent);
-                    finish();
-                    return;
+                DatabaseReference adminRef= DBConnectionRepository.getAdminReference();
+                DatabaseReference cusRef= DBConnectionRepository.getCustomerReference();
+                String userId = user.getUid();
+                //Check if the  user is a admin
+                adminRef.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                    @Override
+                    public void onSuccess(DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.hasChild(userId)){
+                            Log.i("log","logged in");
+                            Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+                            startActivity(intent);
+                            finish();
+                            return;
+                        }else{
+
+
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                           Log.i("Admin Db error",e.getMessage());
+                    }
+                });
+                //check isf the  user is customer
+                    cusRef.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                        @Override
+                        public void onSuccess(DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.hasChild(userId)){
+                                Log.i("log","logged in");
+                                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                                startActivity(intent);
+                                finish();
+                                return;
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.i("User Db error",e.getMessage());
+                        }
+                    });
+
+
+
+
+
                 }
             }
         };
@@ -99,5 +150,8 @@ public class LoginActivity extends Activity {
         mAuth.removeAuthStateListener(firebaseAuthStateListener);
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

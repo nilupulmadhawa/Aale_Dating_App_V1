@@ -4,19 +4,122 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#bfbfbf"
     tools:context=".ui.reports.ReportsFragment">
 
-    <TextView
-        android:id="@+id/text_reports"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="627dp"
+        android:layout_height="310dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/reports"
+                android:layout_width="119dp"
+                android:layout_height="49dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:text="@string/menu_reports"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+
+            <ScrollView
+                android:id="@+id/table_swipe_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="290dp"
+                android:layout_below="@+id/reports"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp">
+
+                <TableLayout
+                    android:id="@+id/table_reports"
+                    android:layout_width="match_parent"
+                    android:layout_height="290dp"
+                    android:layout_below="@+id/users"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+
+                    android:layout_marginBottom="0dp">
+
+                    <TableRow
+                        android:id="@+id/table_report_header"
+                        android:layout_height="34dp"
+                        android:background="@drawable/table_border">
+
+                        <TextView
+                            android:id="@+id/h_one"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/swipe_author"
+                            android:textColor="@color/black"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:layout_width="97dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/swipe_date"
+                            android:textColor="@color/black"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:layout_width="105dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/swipe_type"
+                            android:textColor="@color/black"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:layout_width="127dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/swipe_receiver"
+                            android:textColor="@color/black"
+                            android:textSize="10sp" />
+
+
+                        <TextView
+                            android:layout_width="198dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:padding="10sp"
+                            android:text="@string/swipe_actions"
+                            android:textColor="@color/black"
+
+                            android:textSize="10sp" />
+
+
+                    </TableRow>
+                </TableLayout>
+
+
+            </ScrollView>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
